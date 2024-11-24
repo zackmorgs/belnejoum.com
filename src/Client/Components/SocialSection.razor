@@ -1,0 +1,55 @@
+@code {
+    public bool isLoaded { get; set; } = false;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await Task.Delay(1000); // Simulate loading delay
+            isLoaded = true;
+            StateHasChanged(); // Trigger a re-render to apply the new state
+        }
+    }
+}
+
+<section id="social_section" class="fixed bottom-0 right-0 left-0@(!isLoaded ? " loading" : "")">
+    <div class="container mx-auto">
+        <div class="p-4">
+            @* <hr class="rule"  />  *@
+            <a class="btn btn-social" target="_blank" href="https://belnejoum.bandcamp.com/">
+                <img class="btn-icon icon-lg" role="button" src="/svg/bandcamp.svg" loading="lazy" />
+            </a>
+            <ul id="social_list" class="mt-4">
+                <li>
+                    <a class="btn btn-social" target="_blank" href="https://www.instagram.com/alecrozsa/">
+                        <img class="btn-icon" role="button" src="/svg/facebook.svg" loading="lazy" />
+                    </a>
+                </li>
+                <li>
+                    <a class="btn btn-social" target="_blank" href="https://www.youtube.com/%40Belnejoum">
+                        <img class="btn-icon" role="button" src="/svg/youtube.svg" loading="lazy" />
+                    </a>
+                </li>
+                <li>
+                    <a class="btn btn-social" target="_blank"
+                        href="https://open.spotify.com/artist/02yxgMULw5m4fI8I0cuwB5?si=g3EdQIhGStK5As4kcnBMxA">
+                        <img class="btn-icon" role="button" src="/svg/spotify.svg" loading="lazy" />
+                    </a>
+                </li>
+                @* <li>
+                    <a class="btn btn-social" target="_blank" href="https://www.instagram.com/belnejoum/">
+                        <img class="btn-icon" role="button" src="/svg/instagram.svg" loading="lazy" />
+                    </a>
+                </li> *@
+                <li>
+                    <a class="btn btn-social" target="_blank" href="https://soundcloud.com/belnejoum">
+                        <img class="btn-icon" role="button" src="/svg/soundcloud.svg" loading="lazy" />
+                    </a>
+                </li>
+
+
+
+            </ul>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,100 @@
+﻿@using Microsoft.AspNetCore.Components.Routing
+@using Microsoft.AspNetCore.Components
+
+@inject NavigationManager NavigationManager
+
+@code {
+    private bool isMenuOpen = false;
+    public bool isLoaded { get; set; } = false;
+    private bool isHomePage => NavigationManager.Uri == NavigationManager.BaseUri; // Check if not on "/"
+
+    private void ToggleMenu()
+    {
+        isMenuOpen = !isMenuOpen;
+    }
+    private void NavClosed()
+    {
+        isMenuOpen = false;
+    }
+    private void LinkClick()
+    {
+        NavClosed();
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await Task.Delay(1000);
+            isLoaded = true;
+            StateHasChanged();
+        }
+    }
+}
+
+<nav id="nav_menu" class="fixed top-0 right-0 left-0 z-10 bg-white shadow @(!isLoaded ? "loading" : "")">
+    <div class="container relative mx-auto">
+        <div id="nav_bar" class="pt-4 px-4">
+            <div class="flex items-center justify-end">
+                <button class="block p-2 text-gray-400 rounded focus:outline-none focus:ring-2 focus:ring-gray-400"
+                    @onclick="@ToggleMenu">
+                    @if (!isMenuOpen)
+                    {
+                        <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 12h16M4 18h16">
+                            </path>
+                        </svg>
+                    }
+                    else
+                    {
+                        <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12">
+                            </path>
+                        </svg>
+                    }
+                </button>
+            </div>
+            <hr id="rule-nav" class="mt-2" />
+        </div>
+
+        <!-- Conditionally apply "closed" when the menu is not open -->
+        <div id="nav_items"
+            class="absolute md:static transition-all duration-300 ease-in-out @(isMenuOpen ? "" : "closed")">
+            <ul id="nav_list" class="flex flex-col md:flex-row">
+                <li class="nav-li">
+                    <NavLink activeClass="active" @onclick="@LinkClick" href="/" class="nav-item px-4 py-2 md:py-0" Match="NavLinkMatch.All">
+                        Home
+                    </NavLink>
+                </li>
+                <li class="nav-li">
+                    <NavLink activeClass="active" @onclick="@LinkClick" href="/bio" class="nav-item px-4 py-2 md:py-0" Match="NavLinkMatch.Prefix">
+                        Biography
+                    </NavLink>
+                </li>
+                <li class="nav-li">
+                    <NavLink activeClass="active" @onclick="@LinkClick" href="/music"
+                        class="nav-item px-4 py-2 md:py-0" Match="NavLinkMatch.Prefix">
+                        Music
+                    </NavLink>
+                </li>
+                <li class="nav-li">
+                    <NavLink activeClass="active" @onclick="@LinkClick" href="/contact"
+                        class="nav-item px-4 py-2 md:py-0" Match="NavLinkMatch.Prefix">
+                        Contact
+                    </NavLink>
+                </li>
+                <li class="nav-li">
+                    <NavLink activeClass="active" @onclick="@LinkClick" href="/merch"
+                        class="nav-item px-4 py-2 md:py-0" Match="NavLinkMatch.Prefix">
+                        Merch
+                    </NavLink>
+                    @* <hr class="rule-md" /> *@
+                </li>
+
+            </ul>
+        </div>
+    </div>
+</nav>

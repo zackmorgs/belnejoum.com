@@ -1,0 +1,267 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+
+@font-face {
+    font-family: 'Windlass';
+    src: url('/webfont/windlass.woff2') format('woff2'),
+        url('/webfont/windlass.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Clockwork';
+    src: url('/webfont/clockwork.woff2') format('woff2'),
+        url('/webfont/clockwork.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+:root {
+    font-family: "Cormorant Infant", serif;
+    font-style: normal;
+}
+
+::selection {
+    color: #ffffff;
+    background-color: red;
+}
+
+body {
+    background: black;
+    color: #f1f1f1;
+}
+
+#main {
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    min-height: calc(100vh - 72px);
+    /* margin-top: -72px; */
+}
+
+p {
+    line-height: 1.5rem;
+    @apply py-2;
+}
+
+.transparent {
+    opacity:0.0;
+}
+
+#nav_menu {
+    position: sticky;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(0.25rem);
+    transform: translateY(0);
+    transition: transform ease-in-out 0.666s;
+}
+
+#nav_menu.loading {
+    transform: translateY(-100%);
+}
+
+#nav_items.closed {
+    opacity:0.0;
+    z-index:-1;
+    height:0px;
+    overflow-y:hidden;
+}
+
+#nav_items {
+    top: 65px;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    transition: opacity 0.25s ease-in-out, height 0.25s ease-in-out;
+    z-index:10;
+}
+
+#rule-nav {
+    border: none;
+    border-bottom: 1px solid rgba(225, 225, 255, 0.25);
+}
+
+#nav_list {
+    background: rgb(0 0 0 / 86%);
+    backdrop-filter: blur(1rem);
+    min-height: calc(100vh - 72px);
+}
+
+#home_link {
+    @apply inline-flex;
+    @apply items-center;
+    @apply justify-center;
+    text-align: center;
+    /* text-transform:uppercase; */
+    opacity: 0.0;
+    letter-spacing: 1.25pt;
+}
+
+.nav-li {
+    padding: 0 1rem;
+
+}
+
+.nav-item {
+    font-size: 2.75rem;
+    transition: text-shadow ease 0.3s;
+    padding: 0.5rem;
+    @apply block;
+    border-bottom: 1px solid rgba(225, 225, 225, 0.75);
+    /* text-transform:uppercase; */
+    font-family: 'Clockwork';
+    font-weight: 100;
+    letter-spacing: 2pt;
+    /* backdrop-filter:blur(1rem); */
+    text-shadow:0px 0px 1rem rgba(0,0,0,1.0);
+}
+.nav-li:last-child .nav-item {
+    border:none;
+}
+.nav-item::first-letter {
+    font-size: 3.5rem;
+}
+
+.nav-item.active {
+    /* text-shadow: 0px 0px 1rem rgba(255, 255, 255, 1.09); */
+    color:#bfaf5a;
+}
+
+.nav-item:hover {
+    text-shadow: 0 0 1rem rgba(255, 255, 255, 0.5);
+}
+
+.hero {
+    transition: filter ease 0.3s;
+    width: 100%;
+    @apply px-4;
+    @apply px-2;
+    @apply mx-auto;
+    @apply absolute;
+    @apply flex;
+    @apply items-start;
+    @apply justify-center;
+    background: url('/img/painting_bg.jpg');
+    background-size: cover;
+    z-index: 0;
+    overflow: hidden;
+    /* min-height: calc(100vh - 72px); */
+    min-height: 100vh;
+
+}
+
+#logo {
+    transition: margin 0.3s ease-in-out, transform 0.3s ease-in-out, filter 0.3s ease-in-out;
+
+    margin-top: 6rem;
+    max-height: 574px;
+    filter: drop-shadow(0px 0px 1rem black);
+    transform: translateY(0);
+}
+
+.loading #logo {
+    animation: logoLoadingAnimation 0.6s ease-in-out forwards;
+}
+
+/* Keyframes for the animation */
+@keyframes logoLoadingAnimation {
+    0% {
+        transform: translateY(25%);
+        filter: blur(1rem) drop-shadow(0px 0px 0rem transparent);
+
+    }
+    100% {
+        transform: translateY(0);
+        filter: blur(0rem) drop-shadow(0px 0px 1rem black);
+
+    }
+}
+
+
+
+.rule {
+    max-width: 9rem;
+    @apply mx-auto;
+    @apply my-2;
+}
+
+.rule.rule-lg {
+    width: 14rem;
+}
+.rule-md {
+    width: 14rem;
+    @apply mx-auto;
+}
+
+.btn {
+    @apply py-3;
+    @apply px-4;
+    @apply inline-flex;
+    @apply items-center;
+    @apply justify-center;
+    border: 1px solid #f1f1f124;
+    color: #ffffff;
+    background: rgba(0, 0, 0, 0.5);
+    line-height: 1em;
+    transition: transform ease 0.3s;
+    border-radius: 2rem;
+    box-shadow: 0px 0px 1rem black;
+}
+
+.btn.btn-social {
+    @apply flex;
+}
+
+.btn-social:active {
+    background: black;
+    transform: scale(0.9);
+}
+
+.btn::selection {
+    background: transparent;
+    color: initial;
+}
+
+.btn:hover {
+    transform: scale(1.05);
+}
+
+.btn-icon {
+    max-height: 1em;
+    width: auto;
+}
+
+#social_section {
+    background: linear-gradient(180deg, transparent, black, rgba(0, 0, 0, 1.0));
+}
+
+#social_list {
+    @apply grid;
+    @apply grid-cols-2;
+    @apply gap-2;
+    @apply mx-auto;
+    max-width: 60ch;
+}
+ 
+@media (min-height: 700px) {
+    #logo {
+        margin-top: 12rem;
+    }
+}
+
+@media (min-width: 414px) {}
+
+
+@media (min-width: 768px) {}
+
+
+@media (min-width: 1024px) {}
+
+@media (min-width: 1280px) {}
+
+@media (min-width: 1536px) {}
