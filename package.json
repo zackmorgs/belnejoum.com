@@ -7,10 +7,11 @@
     "watch" : "npm-run-all -p css:watch dotnet:watch",
     "css:build": "npx tailwindcss -i ./src/Client/wwwroot/css/src.css -o ./src/Client/wwwroot/css/dist.css",
     "css:watch": "npx tailwindcss -i ./src/Client/wwwroot/css/src.css -o ./src/Client/wwwroot/css/dist.css --watch",
-    "css:minify" : "lightningcss --minify --bundle --targets \">= 0.25%\" ./src/Client/wwwroot/css/dist.css -o ./src/Client/wwwroot/css/dist.css --sourcemap",
+    "css:minify" : "lightningcss --minify --bundle  ./src/Client/wwwroot/css/dist.css -o ./src/Client/wwwroot/css/dist.css --sourcemap",
     "dotnet:publish" : "dotnet publish ./src/Client -c Release -p:PublishTrimmed=true -o ./dist",
     "dotnet:watch" : "dotnet watch --project ./src/Client/Client.csproj",
-    "firebase:deploy" : "firebase deploy"
+    "firebase:deploy" : "firebase deploy",
+    "deploy" : "npm-run-all -s css:build css:minify dotnet:publish firebase:deploy"
   },
   "keywords": [],
   "author": "",

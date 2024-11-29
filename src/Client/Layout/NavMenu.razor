@@ -32,7 +32,7 @@
     }
 }
 
-<nav id="nav_menu" class="fixed top-0 right-0 left-0 z-10 bg-white shadow @(!isLoaded ? "loading" : "")">
+<nav id="nav_menu" class="sticky top-0 right-0 left-0 z-10 lg:static shadow @(!isLoaded ? "loading" : "")">
     <div class="container relative mx-auto">
         <div id="nav_bar" class="pt-4 px-4">
             <div class="flex items-center justify-end">
@@ -61,39 +61,39 @@
         </div>
 
         <!-- Conditionally apply "closed" when the menu is not open -->
-        <div id="nav_items"
-            class="absolute md:static transition-all duration-300 ease-in-out @(isMenuOpen ? "" : "closed")">
-            <ul id="nav_list" class="flex flex-col md:flex-row">
+        <div id="nav_items" class="absolute md:static lg: transition-all duration-300 ease-in-out @(isMenuOpen ? "" : "closed") lg:flex lg:items-center lg:justify-end">
+            <ul id="nav_list" class="flex flex-col md:text-center lg:flex-row lg:inline-flex lg:items-start">
                 <li class="nav-li">
-                    <NavLink activeClass="active" @onclick="@LinkClick" href="/" class="nav-item px-4 py-2 md:py-0" Match="NavLinkMatch.All">
+                    <NavLink activeClass="active" @onclick="@LinkClick" href="/" class="nav-item "
+                        Match="NavLinkMatch.All">
                         Home
                     </NavLink>
                 </li>
                 <li class="nav-li">
-                    <NavLink activeClass="active" @onclick="@LinkClick" href="/bio" class="nav-item px-4 py-2 md:py-0" Match="NavLinkMatch.Prefix">
+                    <NavLink activeClass="active" @onclick="@LinkClick" href="/bio" class="nav-item "
+                        Match="NavLinkMatch.Prefix">
                         Biography
                     </NavLink>
                 </li>
                 <li class="nav-li">
-                    <NavLink activeClass="active" @onclick="@LinkClick" href="/music"
-                        class="nav-item px-4 py-2 md:py-0" Match="NavLinkMatch.Prefix">
+                    <NavLink activeClass="active" @onclick="@LinkClick" href="/music" class="nav-item "
+                        Match="NavLinkMatch.Prefix">
                         Music
                     </NavLink>
                 </li>
                 <li class="nav-li">
-                    <NavLink activeClass="active" @onclick="@LinkClick" href="/contact"
-                        class="nav-item px-4 py-2 md:py-0" Match="NavLinkMatch.Prefix">
-                        Contact
-                    </NavLink>
-                </li>
-                <li class="nav-li">
-                    <NavLink activeClass="active" @onclick="@LinkClick" href="/merch"
-                        class="nav-item px-4 py-2 md:py-0" Match="NavLinkMatch.Prefix">
+                    <NavLink activeClass="active" @onclick="@LinkClick" href="/merch" class="nav-item "
+                        Match="NavLinkMatch.Prefix">
                         Merch
                     </NavLink>
                     @* <hr class="rule-md" /> *@
                 </li>
-
+                <li class="nav-li">
+                    <NavLink activeClass="active" @onclick="@LinkClick" href="/contact" class="nav-item "
+                        Match="NavLinkMatch.Prefix">
+                        Contact
+                    </NavLink>
+                </li>
             </ul>
         </div>
     </div>

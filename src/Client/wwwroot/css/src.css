@@ -44,9 +44,31 @@ body {
     /* margin-top: -72px; */
 }
 
+h1,h2,h3 {
+    font-family:'Clockwork';
+    line-height:1.5em;
+    letter-spacing:2pt;
+}
+h1 {
+    font-size:3rem;
+}
+h2 {
+    font-size:2rem;
+}
+h3 {
+    font-size:1.5rem;
+}
+h1::first-letter,h2::first-letter,h3::first-letter {
+    font-size: 1.5em;
+}
+
 p {
-    line-height: 1.5rem;
+    line-height: 1.5em;
+    font-size:1.25rem;
     @apply py-2;
+    max-width:55ch;
+    @apply mx-auto;
+    @apply text-center;
 }
 
 .transparent {
@@ -103,12 +125,12 @@ p {
 }
 
 .nav-li {
-    padding: 0 1rem;
+    padding: 0 2rem;
 
 }
 
 .nav-item {
-    font-size: 2.75rem;
+    font-size: 2rem;
     transition: text-shadow ease 0.3s;
     padding: 0.5rem;
     @apply block;
@@ -119,12 +141,13 @@ p {
     letter-spacing: 2pt;
     /* backdrop-filter:blur(1rem); */
     text-shadow:0px 0px 1rem rgba(0,0,0,1.0);
+    padding:1rem 0rem 0.5rem 1rem;
 }
 .nav-li:last-child .nav-item {
     border:none;
 }
 .nav-item::first-letter {
-    font-size: 3.5rem;
+    font-size: 1.25em;
 }
 
 .nav-item.active {
@@ -142,23 +165,27 @@ p {
     @apply px-4;
     @apply px-2;
     @apply mx-auto;
-    @apply absolute;
-    @apply flex;
-    @apply items-start;
-    @apply justify-center;
-    background: url('/img/painting_bg.jpg');
-    background-size: cover;
-    z-index: 0;
-    overflow: hidden;
-    /* min-height: calc(100vh - 72px); */
-    min-height: 100vh;
+
+
 
 }
-
+    .hero.main {
+        @apply absolute;
+        @apply flex;
+        @apply items-start;
+        @apply justify-center;
+        background: url('/img/painting_bg.jpg');
+        background-size: cover;
+        z-index: 0;
+        overflow: hidden;
+        /* min-height: calc(100vh - 72px); */
+        min-height: 100vh; 
+    }
 #logo {
     transition: margin 0.3s ease-in-out, transform 0.3s ease-in-out, filter 0.3s ease-in-out;
 
     margin-top: 6rem;
+    max-width:20rem;
     max-height: 574px;
     filter: drop-shadow(0px 0px 1rem black);
     transform: translateY(0);
@@ -171,14 +198,14 @@ p {
 /* Keyframes for the animation */
 @keyframes logoLoadingAnimation {
     0% {
-        transform: translateY(25%);
+        transform: translateY(15%);
         filter: blur(1rem) drop-shadow(0px 0px 0rem transparent);
-
+        opacity:0.0;
     }
     100% {
         transform: translateY(0);
         filter: blur(0rem) drop-shadow(0px 0px 1rem black);
-
+        opacity:1.0;
     }
 }
 
@@ -228,14 +255,17 @@ p {
 }
 
 .btn:hover {
-    transform: scale(1.05);
+    transform: scale(1.025);
 }
 
 .btn-icon {
     max-height: 1em;
     width: auto;
 }
-
+#bandcamp_link {
+    max-width:480px;
+    margin:0 auto;
+}
 #social_section {
     background: linear-gradient(180deg, transparent, black, rgba(0, 0, 0, 1.0));
 }
@@ -248,19 +278,80 @@ p {
     max-width: 60ch;
 }
  
+@media (min-height: 553px) {
+    #logo {
+        margin-top: 6rem;
+        max-height: 17rem;
+    }
+}
+
 @media (min-height: 700px) {
     #logo {
         margin-top: 12rem;
+        max-width:20rem;
+    }
+}
+
+@media (min-height: 800px) {
+    #logo {
+        margin-top: 12rem;
+        max-width: 24rem;
+        max-height: 22rem;
     }
 }
 
 @media (min-width: 414px) {}
 
 
-@media (min-width: 768px) {}
+@media (min-width: 768px) {
+    #logo {
+        max-width: 36rem;
+    }
+    .nav-li {
+        margin:0 2rem;
+    }
+    .nav-item  {
+        padding:1.5rem 2rem;
+    }
+
+    #logo {
+        max-width: 37rem;
+        max-height: 34rem;
+    }
+}
 
 
-@media (min-width: 1024px) {}
+@media (min-width: 1024px) {
+    #logo {
+        max-width: 34rem;
+        max-height: 29rem;
+        margin-top: 5rem;
+    }
+    #nav_bar {
+        display:none;
+    }
+    #nav_items.closed {
+        opacity:1.0;
+        height:initial;
+    }
+    #nav_list {
+        min-height:auto;
+        background:transparent;
+        backdrop-filter:none;
+    }
+    .nav-li {
+        padding:0;
+        margin:0;
+    }
+    .nav-item {
+        border:none;
+        font-size:1.5rem;
+        padding:0.5rem 1rem;
+    }
+    .nav-item::first-letter {
+        font-size: 1.75rem;
+    }
+}
 
 @media (min-width: 1280px) {}
 
