@@ -64,21 +64,20 @@
         <div id="nav_items" class="absolute md:static lg: transition-all duration-300 ease-in-out @(isMenuOpen ? "" : "closed") lg:flex lg:items-center lg:justify-end">
             <ul id="nav_list" class="flex flex-col md:text-center lg:flex-row lg:inline-flex lg:items-start">
                 <li class="nav-li">
-                    <NavLink activeClass="active" @onclick="@LinkClick" href="/" class="nav-item "
-                        Match="NavLinkMatch.All">
+                    <NavLink activeClass="active" @onclick="@LinkClick" href="/" class="nav-item " Match="NavLinkMatch.All">
                         Home
                     </NavLink>
                 </li>
-                <li class="nav-li">
-                    <NavLink activeClass="active" @onclick="@LinkClick" href="/bio" class="nav-item "
-                        Match="NavLinkMatch.Prefix">
-                        Biography
-                    </NavLink>
-                </li>
+
                 <li class="nav-li">
                     <NavLink activeClass="active" @onclick="@LinkClick" href="/music" class="nav-item "
                         Match="NavLinkMatch.Prefix">
                         Music
+                    </NavLink>
+                </li>                
+                <li class="nav-li">
+                    <NavLink activeClass="active" @onclick="@LinkClick" href="/bio" class="nav-item " Match="NavLinkMatch.Prefix">
+                        Biography
                     </NavLink>
                 </li>
                 <li class="nav-li">
