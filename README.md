@@ -1,8 +1,6 @@
-# AlecRozsa
-Trying to pad my Fiverr account reviews. 
+# Belnejoum
+Made a quick site for my buddy's band.
 
-A portfolio site for my long-time friend Alec Rozsa.
-
-Meant to be a simple static site with room for exapansion. 
-
-Uses Blazor WASM.
+## Technology
+- Blazor WASM architecture
+- Uses lightningcss and TailwindCSS for styles.
